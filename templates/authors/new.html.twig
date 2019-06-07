@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Author{% endblock %}
+
+{% block body %}
+    {{ form_start(author_form) }}
+    {{ form_widget(author_form) }}
+    {{ form_end(author_form) }}
+{% endblock %}

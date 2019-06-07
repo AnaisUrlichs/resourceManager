@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Authors{% endblock %}
+
+{% block body %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Public Content</h1>
+    {% for article in articles %}
+        {% if is_granted('ROLE_ADMIN') %}
+            {% if article.isPublic == true %}
+                <div class="card text-white bg-primary mb-3" style="max-width: 60rem;">
+                    <div class="card-header">{{ article.articleTitle }}</div>
+                    <div class="card-body">
+                        <p class="card-text">{{ article.articleOutline }}</p>
+
+                        {% for author in article.author %}
+                            <a href="/author/{{ author.id }}" class="btn btn-primary">{{ author.name }}</a>
+                        {% endfor %}
+
+                            <a href="/article/edit/{{ article.id }}" class="btn btn-light">Edit</a>
+                            <a href="/article/delete/{{ article.id }}" class="btn btn-danger delete-author" data-id="{{ article.id }}" onclick="return confirm ('Are you sure?');">Delete</a>
+                    </div>
+                </div>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

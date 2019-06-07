@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SearchController!{% endblock %}
+
+{% block body %}
+       {# <table class="table table-striped" id="authors">
+            <thread>
+                <th>Author Name</th>
+                <th>Actions</th>
+                <tbody>
+                {% for author in pagination %}
+                    <tr>
+                        <td>{{ author.name }}</td>
+                        <td>
+                            <a href="/author/{{ author.id }}" class="btn btn-dark">Show</a>
+                            <a href="/author/edit/{{ author.id }}" class="btn btn-light">Edit</a>
+                            <a href="/author/delete/{{ author.id }}" class="btn btn-danger delete-author" data-id="{{ author.id }}" onclick="return confirm ('Are you sure?');">Delete</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            No Authors found
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </thread>
+        </table> #}
+                {% for article in pagination_1 %}
+                    <div class="card text-white bg-primary mb-3" style="max-width: 60rem;">
+                        <div class="card-header">{{ article.articleTitle }}</div>
+                        <div class="card-body">
+                            <p class="card-text">{{ article.articleOutline }}</p>
+
+                            {% for author in article.author %}
+                                <a href="/author/{{ author.id }}" class="btn btn-primary">{{ author.name }}</a>
+                            {% endfor %}
+
+                            {% if article.user is not same as(app.user) %}
+                                <a href="/article/edit/{{ article.id }}" class="btn btn-light">Edit</a>
+                                <a href="/article/delete/{{ article.id }}" class="btn btn-danger delete-author" data-id="{{ article.id }}" onclick="return confirm ('Are you sure?');">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            No Articles found
+                        </td>
+                    </tr>
+                {% endfor %}
+{% endblock %}
+

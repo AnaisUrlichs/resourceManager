@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %} Authors {% endblock %}
+
+{% block body %}
+
+    {% if authors %}
+        <table class="table table-striped" id="authors">
+            <thread>
+                <th>Author Name</th>
+                <th>Actions</th>
+                <tbody>
+                    {% for author in authors %}
+                        {% if author.user is same as(app.user) %}
+                            <tr>
+                                <td><a href="/author/{{ author.id }}">{{ author.name }}</a></td>
+                                <td>
+                                    <a href="/author/edit/{{ author.id }}" class="btn btn-dark">Edit</a>
+                                    <a href="/author/delete/{{ author.id }}" class="btn btn-danger delete-author" data-id="{{ author.id }}" onclick="return confirm ('Are you sure?');">Delete</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </thread>
+        </table>
+        {% else %}
+
+    {%  endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {#<script src="/js/main.js"></script>#}
+{% endblock %}

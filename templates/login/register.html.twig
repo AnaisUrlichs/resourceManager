@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %} Hello! {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {# todo - replace with a Symfony form! #}
+                {{ form_start(registration_form) }}
+                {{ form_widget(registration_form) }}
+                {{ form_end(registration_form) }}
+
+               {# <form method="post" style="margin: 20px auto; width: 20rem">
+                    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+                    <label for="inputEmail" class="sr-only" >Email address</label>
+                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <br/>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <br/>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me" required> Agree to terms I for sure read
+                        </label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">
+                        Register
+                    </button>#}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

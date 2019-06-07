@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3">
+    <div class="container">
+        <a href="/" class="navbar-brand">Resource Registration</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mobile-nav">
+            <ul class="navbar-nav ml-auto">
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a href="{{ path('edit_admin') }}" class="nav-link">Admin</a>
+                    </li>
+                {% endif %}
+
+                {% if is_granted('ROLE_USER', 'ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a href="/" class="nav-link">Authors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('article_list') }}" class="nav-link">Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('new_author') }}" class="nav-link">New Author</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('new_article') }}" class="nav-link">New Article</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('logout') }}" class="nav-link">Logout</a>
+                </li>
+                    <form action="{{ path('article_search') }}" class="form-inline my-2 my-lg-0">
+                        <input type="text"
+                               name="q"
+                               class="form-control mr-sm-2"
+                               value="{{ app.request.query.get('q') }}"
+                               placeholder="Search..."
+                        >
+                        <button type="submit"
+                                class="btn btn-secondary my-2 my-sm-0">
+                            Search
+                        </button>
+                    </form>
+
+            {% else %}
+                <li class="nav-item">
+                    <a href="{{ path('register') }}" class="nav-link">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ path('login') }}" class="nav-link">Login</a>
+                </li>
+
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

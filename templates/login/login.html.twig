@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %} Hello! {% endblock %}
+
+{% block body %}
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <form action="{{ path('login') }}" method="POST">
+                        <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+
+                        {% if error %}
+                            <span class="error">{{ error.messageKey }}</span>
+                        {% endif %}
+
+                        <input type="text" name="_username" class="form-control" value="{{ last_username }}" placeholder="Username">
+                        <br/>
+                        <input type="password" class="form-control" name="_password" placeholder="Password">
+                        <br/>
+                        <button class="btn btn-primary mt-3" type="submit">Login</button>
+
+                        <div>
+                            <h4 style="margin-top: 20px"><a href="/register">...or Register</a></h4>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

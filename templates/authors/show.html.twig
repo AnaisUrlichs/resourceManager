@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ author.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ author.name }}</h1>
+    <p>{{ author.description }}</p>
+    <hr>
+
+            {% for article in author.articles %}
+                    <div class="card text-white bg-primary mb-3" id="articledisplay">
+                        <div class="card-header">{{ article.articleTitle }}</div>
+                        <div class="card-body">
+                            <p class="card-text">{{ article.articleOutline }}</p>
+
+                            {% for author in article.author %}
+                                <a href="/author/{{ author.id }}" class="btn btn-primary">{{ author.name }}</a>
+                            {% endfor %}
+
+                            {% if author.user is same as(app.user) or is_granted('ROLE_ADMIN') %}
+                                <a href="/article/edit/{{ article.id }}" class="btn btn-light">Edit</a>
+                                <a href="/article/delete/{{ article.id }}" class="btn btn-danger delete-author" data-id="{{ article.id }}" onclick="return confirm ('Are you sure?');">Delete</a>
+                            {% endif %}
+                        </div>
+                    </div>
+            {% endfor %}
+
+    <a href="/">Go Back</a>
+{% endblock %}
