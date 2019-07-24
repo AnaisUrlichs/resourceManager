@@ -25,7 +25,7 @@ class ArticleService
     }
 
     /**
-     * @param EntityManagerInterface $em
+     * @param EntityManagerInterface $entityManager
      * @param $article
      */
     public function createArticle(Article $article, User $user): void

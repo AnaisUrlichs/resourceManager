@@ -26,8 +26,12 @@ class Article
     /**
      * @ORM\Column(type="text")
      */
-
     private $articleOutline;
+
+    /**
+     * @ORM\Column(type="string", unique=false, nullable=true)
+     */
+    private $release;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Author", inversedBy="articles")
@@ -70,6 +74,14 @@ class Article
 
     public function setArticleOutline ($articleOutline) {
         $this->articleOutline = $articleOutline;
+    }
+
+    public function getRelease () {
+        return $this-> release;
+    }
+
+    public function setRelease ($release) {
+        $this->release = $release;
     }
 
     /**

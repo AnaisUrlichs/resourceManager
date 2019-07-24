@@ -9,6 +9,7 @@ use App\Repository\AuthorRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,6 +32,9 @@ class ArticleType extends AbstractType
 
             ->add('articleOutline', TextareaType::class, array(
                 'required' => false,
+                'attr' => array('class' => 'form-control') ) )
+
+            ->add('release', TextType::class, array(
                 'attr' => array('class' => 'form-control') ) )
 
             ->add('author', EntityType::class, [
